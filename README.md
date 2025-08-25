@@ -1,1 +1,847 @@
-# bot
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زين مسلم - جلسات تصوير احترافية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+        
+        /* Services */
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        /* Booking Form */
+        .booking {
+            background: linear-gradient(135deg, #f6f9fc 0%, #e9f2fa 100%);
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Social Media */
+        .social-media {
+            text-align: center;
+            background: var(--secondary-color);
+            color: white;
+            padding: 50px 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: var(--accent-color);
+        }
+        
+        /* Admin Panel */
+        .admin-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            max-width: 1000px;
+            display: none;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .bookings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .bookings-table th,
+        .bookings-table td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .bookings-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .bookings-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-pending {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .status-confirmed {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .status-cancelled {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 14px;
+        }
+        
+        .btn-view {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-confirm {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-cancel {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .admin-login {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 40px auto;
+        }
+        
+        .admin-login h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .bookings-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-camera"></i>
+                    <span>زين مسلم</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">خدماتي</a></li>
+                    <li><a href="#booking">الحجز</a></li>
+                    <li><a href="#contact">التواصل</a></li>
+                    <li><a href="#" onclick="showAdminLogin()">لوحة التحكم</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>زين مسلم</h1>
+            <p>مصور محترف متخصص في جلسات التصوير الفوتوغرافي</p>
+            <a href="#booking" class="btn">احجز جلستك الآن</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدمات التصوير</h2>
+                <p>أقدم مجموعة متنوعة من خدمات التصوير الاحترافية</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1554080353-321e452ccf19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تصوير شخصي">
+                    </div>
+                    <div class="service-content">
+                        <h3>جلسات شخصية</h3>
+                        <p>جلسات تصوير شخصية احترافية تعبر عن شخصيتك بأفضل طريقة</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تصوير طبيعة">
+                    </div>
+                    <div class="service-content">
+                        <h3>تصوير الطبيعة</h3>
+                        <p>التقاط أجمل اللحظات في أحضان الطبيعة بأفضل الإطارات</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تصوير حفلات">
+                    </div>
+                    <div class="service-content">
+                        <h3>تصوير المناسبات</h3>
+                        <p>توثيق لحظاتك الخاصة في الأفراح والمناسبات العائلية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>حجز جلسة تصوير</h2>
+                <p>املأ النموذج التالي لحجز موعدك</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="name">الاسم بالكامل</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">نوع الخدمة</label>
+                        <select id="service" required>
+                            <option value="">اختر نوع الخدمة</option>
+                            <option value="personal">جلسة تصوير شخصية</option>
+                            <option value="nature">جلسة تصوير طبيعة</option>
+                            <option value="event">تصوير مناسبات</option>
+                            <option value="other">خدمة أخرى</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">التاريخ المفضل</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">ملاحظات إضافية</label>
+                        <textarea id="message"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">إرسال طلب الحجز</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Login -->
+    <div class="admin-login" id="admin-login">
+        <h3><i class="fas fa-lock"></i> دخول المسؤول</h3>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" id="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور</label>
+                <input type="password" id="password" required>
+            </div>
+            
+            <button type="submit" class="btn">دخول</button>
+        </form>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+            <h2><i class="fas fa-tachometer-alt"></i> لوحة تحكم الحجوزات</h2>
+            <button class="btn" onclick="logout()">تسجيل الخروج</button>
+        </div>
+        
+        <h3>الحجوزات الحالية</h3>
+        <table class="bookings-table">
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>الهاتف</th>
+                    <th>نوع الخدمة</th>
+                    <th>التاريخ</th>
+                    <th>الحالة</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody id="bookings-list">
+                <!-- Bookings will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Social Media Section -->
+    <section class="social-media" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>تواصل معي</h2>
+                <p>تابعني على منصات التواصل الاجتماعي</p>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://instagram.com/zain.muslim" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@zain.muslim" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://t.me/zain.muslim" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>زين مسلم - تصوير احترافي يعبر عنك</p>
+            <div class="copyright">
+                تمت البرمجة بواسطة أحمد خان &copy; 2023
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات الحجوزات (سيتم تخزينها في localStorage)
+        let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        
+        // بيانات المسؤول (يجب تغييرها في الواقع إلى بيانات أكثر أماناً)
+        const adminCredentials = {
+            username: "admin",
+            password: "Zain1234mu"
+        };
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handling
+        const bookingForm = document.getElementById('booking-form');
+        if(bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                const date = document.getElementById('date').value;
+                const message = document.getElementById('message').value;
+                
+                const newBooking = {
+                    id: Date.now(),
+                    name,
+                    email,
+                    phone,
+                    service,
+                    date,
+                    message,
+                    status: 'pending',
+                    createdAt: new Date().toLocaleString('ar-SA')
+                };
+                
+                bookings.push(newBooking);
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+                
+                alert('شكراً لك! تم استلام طلب الحجز بنجاح، سنتواصل معك قريباً لتأكيد الموعد.');
+                this.reset();
+            });
+        }
+        
+        // Set minimum date to today for the date picker
+        const dateInput = document.getElementById('date');
+        if(dateInput) {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            let mm = today.getMonth() + 1;
+            let dd = today.getDate();
+            
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+            
+            const formattedToday = `${yyyy}-${mm}-${dd}`;
+            dateInput.min = formattedToday;
+        }
+        
+        // Admin login functionality
+        function showAdminLogin() {
+            event.preventDefault();
+            document.getElementById('admin-login').style.display = 'block';
+            window.scrollTo({
+                top: document.getElementById('admin-login').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+        
+        const loginForm = document.getElementById('login-form');
+        if(loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username === adminCredentials.username && password === adminCredentials.password) {
+                    document.getElementById('admin-login').style.display = 'none';
+                    document.getElementById('admin-panel').style.display = 'block';
+                    loadBookings();
+                    window.scrollTo({
+                        top: document.getElementById('admin-panel').offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    alert('اسم المستخدم أو كلمة المرور غير صحيحة');
+                }
+            });
+        }
+        
+        function logout() {
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('login-form').reset();
+        }
+        
+        // Load bookings to admin panel
+        function loadBookings() {
+            const bookingsList = document.getElementById('bookings-list');
+            bookingsList.innerHTML = '';
+            
+            if (bookings.length === 0) {
+                bookingsList.innerHTML = '<tr><td colspan="7" style="text-align: center;">لا توجد حجوزات حتى الآن</td></tr>';
+                return;
+            }
+            
+            bookings.forEach(booking => {
+                const row = document.createElement('tr');
+                
+                let statusClass = '';
+                let statusText = '';
+                
+                switch(booking.status) {
+                    case 'pending':
+                        statusClass = 'status-pending';
+                        statusText = 'قيد الانتظار';
+                        break;
+                    case 'confirmed':
+                        statusClass = 'status-confirmed';
+                        statusText = 'تم التأكيد';
+                        break;
+                    case 'cancelled':
+                        statusClass = 'status-cancelled';
+                        statusText = 'ملغية';
+                        break;
+                }
+                
+                row.innerHTML = `
+                    <td>${booking.name}</td>
+                    <td>${booking.email}</td>
+                    <td>${booking.phone}</td>
+                    <td>${getServiceName(booking.service)}</td>
+                    <td>${booking.date}</td>
+                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                    <td>
+                        <button class="action-btn btn-view" onclick="viewBooking(${booking.id})"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn btn-confirm" onclick="confirmBooking(${booking.id})"><i class="fas fa-check"></i></button>
+                        <button class="action-btn btn-cancel" onclick="cancelBooking(${booking.id})"><i class="fas fa-times"></i></button>
+                    </td>
+                `;
+                
+                bookingsList.appendChild(row);
+            });
+        }
+        
+        function getServiceName(serviceKey) {
+            switch(serviceKey) {
+                case 'personal': return 'جلسة تصوير شخصية';
+                case 'nature': return 'جلسة تصوير طبيعة';
+                case 'event': return 'تصوير مناسبات';
+                case 'other': return 'خدمة أخرى';
+                default: return serviceKey;
+            }
+        }
+        
+        function viewBooking(id) {
+            const booking = bookings.find(b => b.id === id);
+            if (booking) {
+                alert(
+                    `تفاصيل الحجز:\n
+الاسم: ${booking.name}
+البريد الإلكتروني: ${booking.email}
+الهاتف: ${booking.phone}
+نوع الخدمة: ${getServiceName(booking.service)}
+التاريخ: ${booking.date}
+الحالة: ${booking.status}
+الملاحظات: ${booking.message || 'لا توجد ملاحظات'}
+تم الإنشاء: ${booking.createdAt}`
+                );
+            }
+        }
+        
+        function confirmBooking(id) {
+            const booking = bookings.find(b => b.id === id);
+            if (booking) {
+                booking.status = 'confirmed';
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+                loadBookings();
+                alert(`تم تأكيد حجز ${booking.name}`);
+            }
+        }
+        
+        function cancelBooking(id) {
+            const booking = bookings.find(b => b.id === id);
+            if (booking) {
+                booking.status = 'cancelled';
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+                loadBookings();
+                alert(`تم إلغاء حجز ${booking.name}`);
+            }
+        }
+    </script>
+</body>
+</html>
